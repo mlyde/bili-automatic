@@ -13,4 +13,4 @@
 
 直接运行脚本即可，输入av/BV号，或者直接粘贴视频链接，回车即可，爬取完成后将评论保存在指定位置，并自动退出。  
 ## 完整代码  
-[查看完整代码](https://github.com/mlyde/bili-video-comment/blob/main/bili-video-comment.py) (2021.7 by mlyde)  
+[查看完整代码](https://github.com/mlyde/bili-automatic/blob/main/bili-video-comment/bili-video-comment.py) (2021.7 by mlyde)  
