@@ -15,4 +15,4 @@
 填写完成必需内容后运行即可，先签到，然后依次进行弹幕打卡，相隔时间8~20s。  
 
 ### 完整代码  
-[查看完整代码]() (2021.5 by mlyde)
+[查看完整代码](https://github.com/mlyde/bili-automatic/blob/main/live-checkin-and-send-massage/live-checkin-and-send-massage.py) (2021.5 by mlyde)  
