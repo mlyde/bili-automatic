@@ -183,15 +183,21 @@ def parse_comment_f(bv):
     c_json = send_f(bv, mode=comment_mode)
     if c_json:
         # 总评论数
-        count_all = c_json['data']['cursor']['all_count']
-        print('comments:%d' % count_all)
+        try:
+            count_all = c_json['data']['cursor']['all_count']
+            print('comments:%d' % count_all)
+        except KeyError:
+            print('KeyError, 该视频可能没有评论!')
+            return '0', '2'	# 找不到键值
     else:
+        print('json错误')
         return 1	# json错误
 
     # 置顶评论
     if c_json['data']['top']['upper']:
         comment_top = c_json['data']['top']['upper']
-        csv = '%s,%s,%s,%s,%s,%s,%s\n' % (comment_top['floor'], 	# 楼层
+        # csv = '%s,%s,%s,%s,%s,%s,%s\n' % (comment_top['floor'], 	# 楼层
+        csv = '%s,%s,%s,%s,%s,%s,%s\n' % ('0', 	# 楼层
         time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(comment_top['ctime'])),# 时间
         comment_top['like'],			# 赞数
         comment_top['member']['mid'],	# uid
@@ -226,7 +232,8 @@ def parse_comment_f(bv):
         if c_list:
             for i in range(len(c_list)):
                 comment_temp = {
-                    'floor': c_list[i]['floor'],			# 楼层
+                    # 'floor': c_list[i]['floor'],			# 楼层
+                    'floor': '0',			# 楼层
                     'time':  time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(c_list[i]['ctime'])),# 时间
                     'like': c_list[i]['like'],				# 赞数
                     'uid': c_list[i]['member']['mid'],		# uid
